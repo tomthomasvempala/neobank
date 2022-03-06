@@ -1,4 +1,4 @@
-var types =["Electronics","Bags","Sports","Accesories"];
+var types =["Electronics","Bags","Sports","Accesories "];
 
 var marketItem =[
   {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neobank/Pages/Home/home.dart';
+import 'package:neobank/Pages/Main/mainPage.dart';
 
 void main() {
   runApp(MyApp());
