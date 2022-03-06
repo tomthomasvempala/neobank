@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/Pages/Login/login.dart';
 import 'package:neobank/Pages/Market/item.dart';
 
 class Market extends StatefulWidget {
@@ -12,17 +13,28 @@ class _MarketState extends State<Market> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Market"),),
+      appBar: AppBar(title: GestureDetector(
+        onDoubleTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return LoginPage();
+          }));
+        },
+        child: Text("Market")),),
           body: Container(
-        child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            height: MediaQuery.of(context).size.height,
+                child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
           crossAxisCount: 2,
           
-        ), 
-        itemCount: marketItem.length,
-        itemBuilder: (context, index){
-          return Container(height: 20,width: 20,color: Colors.red,); 
-        }),
-      ),
+                ), 
+                itemCount: marketItem.length,
+                itemBuilder: (context, index){
+          return Container(width: 20,child: Column(children: [SizedBox(
+            height:200,child: Image(image: NetworkImage(marketItem[index]["img"]))),
+          Text(marketItem[index]["name"]),Text( "${marketItem[index]['price']}"  +" tokens")]),); 
+                }),
+              ),
     );
   }
 }
